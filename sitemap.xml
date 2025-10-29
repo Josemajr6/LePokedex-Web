@@ -2,28 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <!-- 
-      ¡Importante! Reemplaza "https://www.tu-dominio.com/" 
-      con la URL real de tu sitio web cuando lo subas.
-    -->
-    <loc>https://www.tu-dominio.com/</loc>
+    <loc>https://lepokedex.es</loc>
     
-    <!-- 
-      Fecha de la última modificación. 
-      Puedes poner la fecha de hoy (YYYY-MM-DD).
-    -->
     <lastmod>2025-10-29</lastmod>
     
-    <!-- 
-      Frecuencia con la que esperas que cambie esta página.
-      "monthly" (mensual) está bien para una página "Próximamente".
-    -->
     <changefreq>monthly</changefreq>
     
-    <!-- 
-      Prioridad de esta página (de 0.0 a 1.0). 
-      Como es tu única página, 1.0 es correcto.
-    -->
     <priority>1.0</priority>
   </url>
   
