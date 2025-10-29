@@ -99,3 +99,60 @@ notifyForm.addEventListener('submit', async (e) => {
     }
 });
 
+
+// ---------------------------------------------
+// --- SECCIÓN 3: ANIMACIONES DE ENTRADA (GSAP) ---
+// ---------------------------------------------
+
+// Espera a que todo el contenido (incluyendo GSAP) esté cargado
+window.addEventListener('load', () => {
+    
+    // 1. Oculta todo al inicio para evitar "flashes"
+    gsap.set(['.hero h2', '.hero .subtitle', '#countdown .time-block', '#newsletter-form', '.features', '.phone-preview'], { opacity: 0 });
+    gsap.set('.logo', { opacity: 0, y: -30 });
+    
+    // 2. Crea una línea de tiempo (timeline) para secuenciar las animaciones
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    tl.to('.logo', { 
+        duration: 1, 
+        y: 0, 
+        opacity: 1 
+    })
+    .to('.hero h2', { 
+        duration: 1, 
+        y: 0, 
+        opacity: 1 
+    }, '-=0.8') // Se solapa 0.8s con la anterior
+    .to('.hero .subtitle', { 
+        duration: 1, 
+        y: 0, 
+        opacity: 1 
+    }, '-=0.8')
+    .fromTo('#countdown .time-block', { // Animación "pop-in"
+        scale: 0.5,
+        opacity: 0
+    }, {
+        duration: 0.5,
+        scale: 1,
+        opacity: 1,
+        stagger: 0.1, // Anima uno después del otro
+        ease: 'back.out(1.7)'
+    }, '-=0.5')
+    .to('#newsletter-form', { 
+        duration: 1, 
+        y: 0, 
+        opacity: 1 
+    }, '-=0.5')
+    .to('.features', { 
+        duration: 1, 
+        x: 0, 
+        opacity: 1 
+    }, 'split') // Crea una etiqueta "split"
+    .to('.phone-preview', { 
+        duration: 1, 
+        x: 0, 
+        opacity: 1 
+    }, 'split'); // Se anima al mismo tiempo que "features"
+
+});
