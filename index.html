@@ -1,21 +1,157 @@
 <!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Test Pokédex</title>
-    <style>
-        :root {
-            display: grid;
-            place-items: center;
-            color-scheme: dark;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-    </style>
-</head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LePokedex - Próximamente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <div class="contenedor">
-        <h1>Le Pokédex</h1>
-        <h2>Web en desarrollo...</h2>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">LePokedex</h1>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h2 class="animate-in">NUESTRA APP ESTARÁ DISPONIBLE PRONTO</h2>
+                <p class="subtitle animate-in">La herramienta definitiva para gestionar tu lista de Pokémon en Android.</p>
+
+                <div id="countdown" class="animate-in">
+                    <div class="time-block">
+                        <span id="days">00</span>
+                        <span class="label">Días</span>
+                    </div>
+                    <div class="time-block">
+                        <span id="hours">00</span>
+                        <span class="label">Horas</span>
+                    </div>
+                    <div class="time-block">
+                        <span id="minutes">00</span>
+                        <span class="label">Minutos</span>
+                    </div>
+                    <div class="time-block">
+                        <span id="seconds">00</span>
+                        <span class="label">Segundos</span>
+                    </div>
+                </div>
+
+                <div id="newsletter-form" class="animate-in">
+                    <p>¡Déjanos tu email y te avisaremos en el lanzamiento!</p>
+                    
+                    <!-- 
+                      IMPORTANTE: 
+                      Reemplaza "YOUR_FORM_ID" con tu URL única de Formspree.
+                    -->
+                    <form id="notify-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <input type="email" id="email-input" name="email" placeholder="tu.email@ejemplo.com" required>
+                        <button type="submit" class="cta-button">Avísame</button>
+                    </form>
+                    <div id="form-message"></div>
+                </div>
+            </section>
+
+            <section class="content-split">
+                <div class="features animate-left">
+                    <h3>¿Qué podrás hacer?</h3>
+                    <ul>
+                        <li>
+                            <span class="icon">
+                                ➕
+                            </span>
+                            <div>
+                                <strong>Gestiona tu lista:</strong> Agrega, edita y elimina Pokémon de forma sencilla.
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon">
+                                🔍
+                            </span>
+                            <div>
+                                <strong>Filtra por tipo:</strong> Usa un selector para ver solo los Pokémon de un tipo específico.
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon">
+                                📊
+                            </span>
+                            <div>
+                                <strong>Consulta detalles:</strong> Accede a una vista detallada con todas las estadísticas.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phone-preview animate-right">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <!-- Contenido del mockup CSS -->
+                            <div class="app-content-mockup">
+                                <div class="mock-header">
+                                    <h4>Le Pokedex <div class="pokeball-icon"></div></h4>
+                                </div>
+                                <div class="mock-search-bar">
+                                    <input type="text" placeholder="Buscar Pokémon...">
+                                    <div class="mock-filter-button">Filtrar</div>
+                                </div>
+                                <div class="mock-list">
+                                    <div class="mock-list-item-detail">
+                                        <span class="name">Charmander</span>
+                                        <div class="mock-stats">
+                                            <div class="hp">HP <span class="value">45</span></div>
+                                            <div class="attack">Ataque <span class="value">50</span></div>
+                                            <div class="defense">Defensa <span class="value">55</span></div>
+                                            <div class="speed">Velocidad <span class="value">30</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-list-item-detail">
+                                        <span class="name">Squirtle</span>
+                                        <div class="mock-stats">
+                                            <div class="hp">HP <span class="value">50</span></div>
+                                            <div class="attack">Ataque <span class="value">75</span></div>
+                                            <div class="defense">Defensa <span class="value">35</span></div>
+                                            <div class="speed">Velocidad <span class="value">40</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-list-item-detail">
+                                        <span class="name">Bulbasaur</span>
+                                        <div class="mock-stats">
+                                            <div class="hp">HP <span class="value">60</span></div>
+                                            <div class="attack">Ataque <span class="value">40</span></div>
+                                            <div class="defense">Defensa <span class="value">80</span></div>
+                                            <div class="speed">Velocidad <span class="value">40</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-list-item-detail">
+                                        <span class="name">Pikachu</span>
+                                        <div class="mock-stats">
+                                            <div class="hp">HP <span class="value">35</span></div>
+                                            <div class="attack">Ataque <span class="value">55</span></div>
+                                            <div class="defense">Defensa <span class="value">40</span></div>
+                                            <div class="speed">Velocidad <span class="value">90</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mock-add-button">Nuevo Pokémon</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- CAMBIO AQUÍ: Nombres añadidos -->
+        <footer>
+            <p>&copy; 2025 LePokedex. Un proyecto de PMDM.</p>
+            <p style="color: #888; margin-top: 5px;">Desarrollado por Juan José Gamero, Rafael Lázaro y Jose Manuél Jiménez.</p>
+        </footer>
     </div>
 
-
+    <script src="script.js"></script>
 </body>
+</html>
