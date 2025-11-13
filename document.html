@@ -5,84 +5,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentación - LePokedex</title>
 
-    <meta name="description" content="Documentación de la app LePokedex para Android. Disponible próximamente.">
-    <meta name="keywords" content="pokemon, pokedex, android, app, documentacion, pmdm, lepokedex">
+    <meta name="description" content="Documentación técnica del proyecto LePokedex, una app nativa de Android para la gestión de Pokémon.">
+    <meta name="keywords" content="pokemon, pokedex, android, app, documentacion, pmdm, lepokedex, java">
     
     <meta property="og:title" content="Documentación - LePokedex">
-    <meta property="og:description" content="Documentación de la app LePokedex. Disponible próximamente.">
+    <meta property="og:description" content="Documentación técnica del proyecto LePokedex.">
     <meta property="og:image" content="https://lepokedex.es/images/lepokedex-social-preview.png"> 
     <meta property="og:url" content="https://lepokedex.es/document.html">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="article">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Documentación - LePokedex">
-    <meta name="twitter:description" content="Documentación de la app LePokedex. Disponible próximamente.">
+    <meta name="twitter:description" content="Documentación técnica del proyecto LePokedex.">
     <meta name="twitter:image" content="https://lepokedex.es/images/lepokedex-social-preview.png">
+    
     <link rel="icon" href="images/lepokedex-ico.png" type="image/png">
     <link rel="apple-touch-icon" href="images/lepokedex-ico.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
 
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            display: grid;
-            place-items: center;
-            min-height: 100vh;
-            background-color: #f0f2f5;
-            color: #2c3e50;
-            text-align: center;
-            margin: 0;
-            padding: 1rem;
-        }
         .container {
-            padding: 2rem;
+            max-width: 900px; /* Un poco más ancho para el texto */
+            padding-bottom: 4rem;
         }
-        /* ==== CAMBIO 3: Estilos para el h1 con icono ==== */
-        h1 {
+        
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--form-border);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            /* Añadimos padding-top para dejar espacio al botón de tema */
+            padding-top: 4rem; 
+        }
+
+        .doc-header h1 {
             font-size: 2.5rem;
             font-weight: 900;
-            color: #3B4CCA; /* Color primario de LePokedex */
-            display: inline-flex; /* Para alinear el icono */
+            color: var(--primary-color);
+            display: inline-flex;
             align-items: center;
             gap: 15px;
+            margin: 0;
         }
+        
         .logo-icon {
-            width: 35px; /* Tamaño ajustado para el h1 */
+            width: 35px;
             height: 35px;
             image-rendering: -webkit-optimize-contrast; 
             image-rendering: crisp-edges;
         }
-        p {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-        }
-        a {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 0.8rem 1.5rem;
-            background-color: #3B4CCA;
-            color: white;
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             text-decoration: none;
-            border-radius: 8px;
             font-weight: 700;
-            transition: background 0.3s ease;
+            color: var(--text-color-light);
+            transition: color 0.3s ease;
         }
-        a:hover {
-            background-color: #2a37a0;
+        .back-button:hover {
+            color: var(--primary-color);
         }
+
+        /* Estilos de contenido */
+        .doc-content h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--form-border);
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.4s ease;
+        }
+        .doc-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            transition: color 0.4s ease;
+        }
+        .doc-content p {
+            font-size: 1.1rem;
+            color: var(--text-color-light);
+            margin-bottom: 1rem;
+            transition: color 0.4s ease;
+        }
+        .doc-content ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-bottom: 1rem;
+        }
+        .doc-content li {
+            font-size: 1.1rem;
+            color: var(--text-color-light);
+            margin-bottom: 0.5rem;
+            transition: color 0.4s ease;
+        }
+        .doc-content code {
+            background: var(--time-block-bg);
+            border: 1px solid var(--time-block-border);
+            color: var(--text-color);
+            font-family: 'Consolas', 'Monaco', monospace;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: all 0.4s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .doc-header h1 {
+                font-size: 2rem;
+            }
+            .logo-icon {
+                width: 30px;
+                height: 30px;
+            }
+            .doc-content h2 {
+                font-size: 1.8rem;
+            }
+            .doc-content h3 {
+                font-size: 1.3rem;
+            }
+            .doc-content p, .doc-content li {
+                font-size: 1rem;
+            }
+
+            .doc-header {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
+                padding-top: 5rem; /* Más espacio en móvil para el botón de tema */
+            }
+        }
+        
     </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <div class="container">
-        <h1>
-            <img src="images/lepokedex-ico.png" alt="Icono LePokedex" class="logo-icon">
-            LePokedex
-        </h1>
-        <p>Documentación disponible próximamente.</p>
-        <a href="index.html">Volver al inicio</a>
+        
+        <div id="theme-toggle" class="theme-toggle" title="Cambiar tema">
+            <i class="fa-solid fa-moon"></i>
+            <i class="fa-solid fa-sun"></i>
+        </div>
+
+        <header class="doc-header">
+            <h1>
+                <img src="images/lepokedex-ico.png" alt="Icono LePokedex" class="logo-icon">
+                Documentación
+            </h1>
+            <a href="index.html" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Volver al inicio</span>
+            </a>
+        </header>
+
+        <main class="doc-content">
+
+            <h2 id="introduccion">Sobre el Proyecto</h2>
+            <p><strong>LePokedex</strong> es una aplicación nativa para Android diseñada como un proyecto académico para la asignatura de PMDM (Programación Multimedia y de Dispositivos Móviles). El objetivo es crear una Pokédex funcional y visualmente atractiva donde los usuarios puedan gestionar una colección de Pokémon.</p>
+            <p>La aplicación implementa las operaciones básicas de un CRUD (Crear, Leer, Actualizar y Eliminar) sobre una lista de Pokémon, permitiendo una gestión completa de la colección personal del usuario.</p>
+
+            <h2 id="caracteristicas">Características Principales</h2>
+            <p>La versión actual de la aplicación incluye las siguientes funcionalidades:</p>
+            <ul>
+                <li><strong>Listado de Pokémon:</strong> Muestra todos los Pokémon de la colección en una lista vertical clara y eficiente, construida con <code>RecyclerView</code>.</li>
+                <li><strong>Vista de Detalles:</strong> Al seleccionar un Pokémon, el usuario accede a una pantalla con toda su información, incluyendo estadísticas de combate, altura, peso y descripción.</li>
+                <li><strong>Añadir Pokémon:</strong> Un formulario accesible desde un botón flotante (FAB) permite al usuario crear un nuevo Pokémon e introducir todos sus datos.</li>
+                <li><strong>Eliminar Pokémon:</strong> Desde la vista de detalles, es posible eliminar permanentemente un Pokémon de la colección.</li>
+                <li><strong>Filtro por Tipo:</strong> Un menú desplegable (<code>Spinner</code>) en la pantalla principal permite filtrar la lista para mostrar solo Pokémon de un tipo específico (ej. "Fuego", "Agua", "Planta").</li>
+            </ul>
+
+            <h2 id="tecnologia">Tecnologías Utilizadas</h2>
+            <p>El proyecto está construido enteramente con tecnologías nativas de Android, enfocándose en las buenas prácticas de desarrollo de la plataforma:</p>
+            <ul>
+                <li><strong>Lenguaje:</strong> Java.</li>
+                <li><strong>Entorno de Desarrollo:</strong> Android Studio.</li>
+                <li><strong>Componentes de UI:</strong> Se utiliza XML para la definición de layouts, empleando componentes de Material Design como <code>RecyclerView</code>, <code>CardView</code>, <code>FloatingActionButton</code> y <code>Spinner</code>.</li>
+                <li><strong>Navegación:</strong> La navegación entre pantallas se gestiona mediante <code>Intents</code> de Android, pasando datos entre <code>Activities</code> (usando la interfaz <code>Serializable</code>).</li>
+                <li><strong>Gestión de Datos:</strong> Los datos se manejan en memoria a través de un <code>ArrayList</code> estático. Un <code>PokemonAdapter</code> personalizado actúa como puente entre esta lista y la interfaz de usuario.</li>
+            </ul>
+
+            <h2 id="autores">Autores del Proyecto</h2>
+            <p>Este proyecto ha sido desarrollado por:</p>
+            <ul>
+                <li>Juan José Gamero</li>
+                <li>Rafael Lázaro</li>
+                <li>Jose Manuél Jiménez</li>
+            </ul>
+        </main>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

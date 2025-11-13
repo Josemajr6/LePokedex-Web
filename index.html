@@ -3,27 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LePokedex - Próximamente</title>
+    <title>LePokedex - Descarga Oficial</title>
 
-    <meta name="description" content="Nuestra app LePokedex para Android estará disponible pronto. La herramienta definitiva para gestionar tu lista de Pokémon. ¡Suscríbete para el lanzamiento!">
-    <meta name="keywords" content="pokemon, pokedex, android, app, lanzamiento, gestion, lista, lepokedex">
+    <meta name="description" content="Descarga LePokedex para Android. La herramienta definitiva para gestionar tu lista de Pokémon.">
+    <meta name="keywords" content="pokemon, pokedex, android, app, descarga, apk, gestion, lista, lepokedex">
     
-    <meta property="og:title" content="LePokedex - Próximamente">
+    <meta property="og:title" content="LePokedex - Descarga la App">
     <meta property="og:description" content="La herramienta definitiva para gestionar tu lista de Pokémon en Android.">
     <meta property="og:image" content="https://lepokedex.es/images/lepokedex-social-preview.png">
     <meta property="og:url" content="https://lepokedex.es">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="LePokedex - Próximamente">
+    <meta name="twitter:title" content="LePokedex - Descarga la App">
     <meta name="twitter:description" content="La herramienta definitiva para gestionar tu lista de Pokémon en Android.">
     <meta name="twitter:image" content="https://lepokedex.es/images/lepokedex-social-preview.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
 
     <link rel="icon" href="images/lepokedex-ico.png" type="image/png">
     <link rel="apple-touch-icon" href="images/lepokedex-ico.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="stylesheet" href="style.css">
     
@@ -33,6 +36,12 @@
 <body>
 
     <div class="container">
+        
+        <div id="theme-toggle" class="theme-toggle" title="Cambiar tema">
+            <i class="fa-solid fa-moon"></i>
+            <i class="fa-solid fa-sun"></i>
+        </div>
+
         <header>
             <h1 class="logo">
                 <img src="images/lepokedex-ico.png" alt="Icono LePokedex" class="logo-icon">
@@ -42,39 +51,49 @@
 
         <main>
             <section class="hero">
-                <h2>NUESTRA APP ESTARÁ DISPONIBLE PRONTO</h2>
-                <p class="subtitle">La herramienta definitiva para gestionar tu lista de Pokémon en Android.</p>
+                <h2>YA DISPONIBLE PARA ANDROID</h2>
+                <p class="subtitle">La herramienta definitiva para gestionar tu lista de Pokémon. Descárgala ahora.</p>
 
-                <div id="countdown">
-                    <div class="time-block">
-                        <span id="days">00</span>
-                        <span class="label">Días</span>
-                    </div>
-                    <div class="time-block">
-                        <span id="hours">00</span>
-                        <span class="label">Horas</span>
-                    </div>
-                    <div class="time-block">
-                        <span id="minutes">00</span>
-                        <span class="label">Minutos</span>
-                    </div>
-                    <div class="time-block">
-                        <span id="seconds">00</span>
-                        <span class="label">Segundos</span>
+                <div id="hero-actions">
+                    <a href="https://github.com/Josemajr6/LePokedex/releases/download/lepokedex/LePokedex.apk" class="cta-button download-button">
+                        <i class="fa-brands fa-android"></i>
+                        <span>Descargar APK</span>
+                    </a>
+
+                    <div class="secondary-actions">
+                        <a href="document.html" class="cta-button secondary-button">
+                            <i class="fa-solid fa-file-lines"></i>
+                            <span>Documentación</span>
+                        </a>
+
+                        <a href="https://github.com/Josemajr6/LePokedex/" class="cta-button github-button" target="_blank">
+                            <i class="fa-brands fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
                     </div>
                 </div>
 
-                <div id="newsletter-form">
-                    <p>¡Déjanos tu email y te avisaremos en el lanzamiento!</p>
+                <div class="presentation-counter">
+                    <p class="counter-label">Tiempo restante para presentar a Manuel 👨‍🏫</p>
                     
-                    <form id="notify-form" action="https://formspree.io/f/mjkprpvz" method="POST">
-                        <input type="email" id="email-input" name="email" placeholder="tu.email@ejemplo.com" required>
-                        <button type="submit" class="cta-button">Avísame</button>
-                    </form>
-
-                    <a href="document.html" class="cta-button secondary-button">Ver documentación</a>
-                    
-                    <div id="form-message"></div>
+                    <div id="countdown">
+                        <div class="time-block small">
+                            <span id="days">00</span>
+                            <span class="label">Días</span>
+                        </div>
+                        <div class="time-block small">
+                            <span id="hours">00</span>
+                            <span class="label">Horas</span>
+                        </div>
+                        <div class="time-block small">
+                            <span id="minutes">00</span>
+                            <span class="label">Min</span>
+                        </div>
+                        <div class="time-block small">
+                            <span id="seconds">00</span>
+                            <span class="label">Seg</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -84,7 +103,7 @@
                     <ul>
                         <li>
                             <span class="icon">
-                                &#128221; 
+                                <i class="fa-solid fa-list-check"></i>
                             </span>
                             <div>
                                 <strong>Gestiona tu lista:</strong> Agrega, edita y elimina Pokémon de forma sencilla.
@@ -92,7 +111,7 @@
                         </li>
                         <li>
                             <span class="icon">
-                                &#128269; 
+                                <i class="fa-solid fa-filter"></i>
                             </span>
                             <div>
                                 <strong>Filtra por tipo:</strong> Usa un selector para ver solo los Pokémon de un tipo específico.
@@ -100,7 +119,7 @@
                         </li>
                         <li>
                             <span class="icon">
-                                &#128202; 
+                                <i class="fa-solid fa-chart-pie"></i>
                             </span>
                             <div>
                                 <strong>Consulta detalles:</strong> Accede a una vista detallada con todas las estadísticas.
@@ -115,57 +134,75 @@
                             <div class="app-content-mockup">
                                 <div class="mock-header">
                                     <h4>
-                                        <img src="images/lepokedex-ico.png" alt="Icono" class="mock-header-icon">
                                         Le Pokedex
                                     </h4>
+                                    <img src="images/lepokedex-ico.png" alt="Icono" class="mock-header-icon">
                                 </div>
+                                
                                 <div class="mock-search-bar">
-                                    <input type="text" placeholder="Buscar Pokémon...">
-                                    <div class="mock-filter-button">&#128269;</div>
+                                    <input type="text" value="Todos" readonly>
+                                    <div class="mock-filter-button">
+                                        Filtrar
+                                    </div>
                                 </div>
+
                                 <div class="mock-list">
-                                    <div class="mock-list-item-detail">
-                                        <div class="mock-item-info">
-                                            <span class="name">Charmander</span>
-                                            <span class="type fire">Fuego</span>
-                                        </div>
-                                        <div class="mock-stats">
-                                            <div class="attack">ATK <span class="value">50</span></div>
-                                            <div class="defense">DEF <span class="value">55</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="mock-list-item-detail">
-                                        <div class="mock-item-info">
-                                            <span class="name">Squirtle</span>
-                                            <span class="type water">Agua</span>
-                                        </div>
-                                        <div class="mock-stats">
-                                            <div class="attack">ATK <span class="value">75</span></div>
-                                            <div class="defense">DEF <span class="value">35</span></div>
+                                    
+                                    <div class="mock-card card-fire">
+                                        <div class="card-name">Charmander</div>
+                                        <div class="card-stats-grid">
+                                            <div class="stat-box"><span class="stat-label">HP</span><span class="stat-value">39</span></div>
+                                            <div class="stat-box"><span class="stat-label">ATK</span><span class="stat-value">52</span></div>
+                                            <div class="stat-box"><span class="stat-label">DEF</span><span class="stat-value">43</span></div>
+                                            <div class="stat-box"><span class="stat-label">VEL</span><span class="stat-value">65</span></div>
                                         </div>
                                     </div>
-                                    <div class="mock-list-item-detail">
-                                        <div class="mock-item-info">
-                                            <span class="name">Bulbasaur</span>
-                                            <span class="type grass">Planta</span>
-                                        </div>
-                                        <div class="mock-stats">
-                                            <div class="attack">ATK <span class="value">40</span></div>
-                                            <div class="defense">DEF <span class="value">80</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="mock-list-item-detail">
-                                        <div class="mock-item-info">
-                                            <span class="name">Pikachu</span>
-                                            <span class="type electric">Eléctrico</span>
-                                        </div>
-                                        <div class="mock-stats">
-                                            <div class="attack">ATK <span class="value">55</span></div>
-                                            <div class="defense">DEF <span class="value">40</span></div>
+
+                                    <div class="mock-card card-water">
+                                        <div class="card-name">Squirtle</div>
+                                        <div class="card-stats-grid">
+                                            <div class="stat-box"><span class="stat-label">HP</span><span class="stat-value">44</span></div>
+                                            <div class="stat-box"><span class="stat-label">ATK</span><span class="stat-value">48</span></div>
+                                            <div class="stat-box"><span class="stat-label">DEF</span><span class="stat-value">65</span></div>
+                                            <div class="stat-box"><span class="stat-label">VEL</span><span class="stat-value">43</span></div>
                                         </div>
                                     </div>
+
+                                    <div class="mock-card card-electric">
+                                        <div class="card-name">Pikachu</div>
+                                        <div class="card-stats-grid">
+                                            <div class="stat-box"><span class="stat-label">HP</span><span class="stat-value">35</span></div>
+                                            <div class="stat-box"><span class="stat-label">ATK</span><span class="stat-value">55</span></div>
+                                            <div class="stat-box"><span class="stat-label">DEF</span><span class="stat-value">40</span></div>
+                                            <div class="stat-box"><span class="stat-label">VEL</span><span class="stat-value">90</span></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mock-card card-grass">
+                                        <div class="card-name">Bulbasaur</div>
+                                        <div class="card-stats-grid">
+                                            <div class="stat-box"><span class="stat-label">HP</span><span class="stat-value">45</span></div>
+                                            <div class="stat-box"><span class="stat-label">ATK</span><span class="stat-value">49</span></div>
+                                            <div class="stat-box"><span class="stat-label">DEF</span><span class="stat-value">49</span></div>
+                                            <div class="stat-box"><span class="stat-label">VEL</span><span class="stat-value">45</span></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mock-card card-normal">
+                                        <div class="card-name">Eevee</div>
+                                        <div class="card-stats-grid">
+                                            <div class="stat-box"><span class="stat-label">HP</span><span class="stat-value">55</span></div>
+                                            <div class="stat-box"><span class="stat-label">ATK</span><span class="stat-value">55</span></div>
+                                            <div class="stat-box"><span class="stat-label">DEF</span><span class="stat-value">50</span></div>
+                                            <div class="stat-box"><span class="stat-label">VEL</span><span class="stat-value">55</span></div>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="mock-add-button">+</div>
+                                
+                                <div class="mock-add-button">
+                                    Nuevo Pokémon
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -175,7 +212,7 @@
 
         <footer>
             <p>&copy; 2025 LePokedex. Un proyecto de PMDM.</p>
-            <p style="color: #888; margin-top: 5px;">Desarrollado por Juan José Gamero, Rafael Lázaro y Jose Manuél Jiménez.</p>
+            <p class="footer-devs">Desarrollado por Juan José Gamero, Rafael Lázaro y Jose Manuél Jiménez.</p>
         </footer>
     </div>
 

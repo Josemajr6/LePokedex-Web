@@ -1,22 +1,75 @@
 /* --- Reseteo básico y variables --- */
 :root {
-    --primary-color: #3B4CCA; /* Azul de tu app */
-    --secondary-color: #FFDE00; /* Amarillo de Pokémon */
-    --dark-text: #2c3e50;
-    --light-text: #ffffff;
-    --bg-color: #f0f2f5; /* Un fondo gris claro que complementa tu app */
+    --primary-color: #3B4CCA;
+    --secondary-color: #FFDE00;
     --success-color: #2ecc71;
-    --text-color-app: #4a4a4a; /* Color de texto que veo en tu app */
-    --app-bg-color: #f4f7f6; /* Fondo de la app (casi blanco) */
-    --app-header-color: #ffffff; /* Color de la barra superior de tu app (Blanco) */
-    --app-filter-button-color: #3f51b5; /* Azul del botón filtrar */
-    
+
     /* Colores de tipo (para el mockup) */
     --type-fire: #F08030;
     --type-water: #6890F0;
     --type-grass: #78C850;
     --type-electric: #F8D030;
+    
+    /* Modo Claro (Default) */
+    --body-bg: #f0f2f5;
+    --bg-gradient-1: rgba(59, 76, 202, 0.08);
+    --bg-gradient-2: rgba(59, 76, 202, 0.05);
+    
+    --container-bg: rgba(255, 255, 255, 0.85);
+    --container-border: rgba(255, 255, 255, 0.3);
+    --container-shadow: rgba(0, 0, 0, 0.08);
+    
+    --text-color: #2c3e50;
+    --text-color-light: #555;
+    --text-color-faded: #777;
+    
+    --time-block-bg: rgba(255, 255, 255, 0.7);
+    --time-block-border: rgba(255, 255, 255, 0.3);
+    --time-block-shadow: rgba(0, 0, 0, 0.05);
+
+    --form-bg: #ffffff;
+    --form-border: #ddd;
+    --form-shadow: rgba(0, 0, 0, 0.08);
+
+    --secondary-button-bg: transparent;
+    --secondary-button-text: var(--primary-color);
+    --secondary-button-border: var(--primary-color);
+    --secondary-button-hover-bg: rgba(59, 76, 202, 0.08);
+
+    /* Mockup Colors (Estilo App Moderna) */
+    --mockup-body-bg: #111;
+    --mockup-header-bg: #3F51B5; /* Azul Material */
+    --mockup-bg-color: #EDE7F6;   /* Lila claro */
 }
+
+/* Variables de Modo Oscuro */
+html[data-theme='dark'] {
+    --body-bg: #111111;
+    --bg-gradient-1: rgba(59, 76, 202, 0.15);
+    --bg-gradient-2: rgba(59, 76, 202, 0.1);
+    
+    --container-bg: rgba(30, 30, 30, 0.65);
+    --container-border: rgba(255, 255, 255, 0.1);
+    --container-shadow: rgba(0, 0, 0, 0.3);
+
+    --text-color: #E0E0E0;
+    --text-color-light: #B0B0B0;
+    --text-color-faded: #888;
+    
+    --time-block-bg: rgba(40, 42, 58, 0.7);
+    --time-block-border: rgba(255, 255, 255, 0.1);
+    --time-block-shadow: rgba(0, 0, 0, 0.1);
+
+    --form-bg: #1c1e29;
+    --form-border: #333;
+    --form-shadow: rgba(0, 0, 0, 0.2);
+
+    --secondary-button-bg: rgba(59, 76, 202, 0.2);
+    --secondary-button-text: #A8C7FA;
+    --secondary-button-border: #A8C7FA;
+    --secondary-button-hover-bg: rgba(59, 76, 202, 0.3);
+}
+
 
 * {
     margin: 0;
@@ -26,9 +79,8 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    color: var(--dark-text);
+    color: var(--text-color);
     line-height: 1.6;
-    background: var(--bg-color);
     
     display: flex;
     justify-content: center;
@@ -36,19 +88,68 @@ body {
     min-height: 100vh;
     padding: 2rem 0;
     overflow-x: hidden;
+    
+    background-color: var(--body-bg);
+    background-image: radial-gradient(circle at 20% 20%, var(--bg-gradient-1) 0%, transparent 25%),
+                      radial-gradient(circle at 80% 70%, var(--bg-gradient-2) 0%, transparent 25%);
+    background-size: 200% 200%;
+    animation: animated-gradient 20s ease-in-out infinite;
+    transition: background-color 0.4s ease;
+}
+
+@keyframes animated-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .container {
     max-width: 1200px;
     width: 90%;
     margin: auto;
-    background: var(--light-text);
     border-radius: 20px;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
     padding: 3rem;
-    overflow: hidden;
     position: relative;
+    
+    background: var(--container-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--container-border);
+    box-shadow: 0 15px 45px var(--container-shadow);
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
+
+/* Interruptor de Modo Oscuro */
+.theme-toggle {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: var(--time-block-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--time-block-border);
+    color: var(--text-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+.theme-toggle:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: scale(1.1) rotate(15deg);
+}
+.theme-toggle .fa-moon { display: block; }
+.theme-toggle .fa-sun { display: none; }
+
+html[data-theme='dark'] .theme-toggle .fa-moon { display: none; }
+html[data-theme='dark'] .theme-toggle .fa-sun { display: block; }
+
 
 /* --- Cabecera y Logo --- */
 header {
@@ -63,19 +164,17 @@ header {
     letter-spacing: 1px;
     display: inline-flex;
     align-items: center;
-    gap: 15px; /* Aumentado para el icono */
+    gap: 15px;
 }
 
-/* ==== AÑADIDO: Estilo para el icono del logo ==== */
 .logo-icon {
-    width: 40px; /* Ajusta el tamaño según veas */
+    width: 40px;
     height: 40px;
-    /* Para que el navegador lo renderice nítido */
     image-rendering: -webkit-optimize-contrast; 
     image-rendering: crisp-edges;
 }
 
-/* --- Sección Hero y Contador --- */
+/* --- Sección Hero (Títulos) --- */
 .hero {
     text-align: center;
     margin-bottom: 3.5rem;
@@ -86,155 +185,184 @@ header {
     font-weight: 900;
     margin-bottom: 0.75rem;
     letter-spacing: -0.5px;
-    color: var(--dark-text);
+    color: var(--text-color);
+    transition: color 0.4s ease;
 }
 
 .hero .subtitle {
     font-size: 1.4rem;
-    color: #555;
+    color: var(--text-color-light);
     margin-bottom: 3rem;
     font-weight: 500;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    transition: color 0.4s ease;
+}
+
+/* --- NUEVO BLOQUE DE ACCIONES (Botones) --- */
+#hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.secondary-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Estilos Generales Botones */
+.cta-button {
+    border: none;
+    background: var(--primary-color);
+    color: #ffffff;
+    padding: 1.1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
+    text-decoration: none;
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-width: 200px; /* Ancho mínimo uniforme */
+}
+
+.cta-button:hover {
+    background: #2a37a0;
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Botón Descarga (Verde y Grande) */
+.download-button {
+    background-color: var(--success-color);
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+    border-radius: 12px;
+    font-size: 1.2rem;
+    transform: scale(1.05);
+}
+
+.download-button:hover {
+    background-color: #27ae60;
+    transform: scale(1.08) translateY(-3px);
+}
+
+/* Botón Secundario (Bordeado) */
+.cta-button.secondary-button {
+    background: var(--secondary-button-bg);
+    color: var(--secondary-button-text);
+    border: 2px solid var(--secondary-button-border);
+    padding: calc(1.1rem - 2px) calc(2rem - 2px); 
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.cta-button.secondary-button:hover {
+    background: var(--secondary-button-hover-bg);
+    color: var(--secondary-button-text);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px var(--container-shadow);
+}
+
+/* Botón GitHub (Blanco) */
+.github-button {
+    background-color: #ffffff !important;
+    color: #24292e !important;
+    border: 1px solid #e1e4e8;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+}
+
+.github-button:hover {
+    background-color: #f6f8fa !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    color: #000 !important;
+}
+
+html[data-theme='dark'] .github-button {
+    background-color: #24292e !important;
+    color: #ffffff !important;
+    border-color: #444;
+}
+html[data-theme='dark'] .github-button:hover {
+    background-color: #2f363d !important;
+}
+
+
+/* --- NUEVO CONTADOR (Pequeño) --- */
+.presentation-counter {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--form-border);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.counter-label {
+    font-weight: 700;
+    color: var(--text-color-faded);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 #countdown {
     display: flex;
     justify-content: center;
-    gap: 1.8rem;
-    margin-bottom: 3.5rem;
+    gap: 1rem;
 }
 
 .time-block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #ffffff;
-    color: var(--dark-text);
-    border: 1px solid #e7e7e7;
-    padding: 1.2rem 1.8rem;
-    border-radius: 15px;
-    min-width: 110px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    background: var(--time-block-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--time-block-border);
+    box-shadow: 0 4px 10px var(--time-block-shadow);
     transition: transform 0.2s ease-out;
 }
 
-.time-block:hover {
-    transform: translateY(-5px);
+.time-block.small {
+    padding: 0.8rem 1rem;
+    min-width: 75px;
+    border-radius: 12px;
 }
 
-.time-block span:first-child {
-    font-size: 3.2rem;
+.time-block.small:hover {
+    transform: translateY(-3px);
+}
+
+.time-block.small span:first-child {
+    font-size: 1.8rem;
     font-weight: 900;
     line-height: 1.1;
     color: var(--primary-color);
 }
 
-.time-block .label {
-    font-size: 0.9rem;
+.time-block.small .label {
+    font-size: 0.75rem;
     text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 1.5px;
-    margin-top: 0.3rem;
-    color: #777;
+    letter-spacing: 0.5px;
+    margin-top: 0.2rem;
+    color: var(--text-color-faded);
 }
 
-/* --- Formulario "Avísame" --- */
-#newsletter-form {
-    max-width: 550px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-#newsletter-form p {
-    font-size: 1.2rem;
-    margin-bottom: 1.2rem;
-    font-weight: 700;
-    color: var(--dark-text);
-}
-
-/* ==== CAMBIO: Formulario unificado ==== */
-#notify-form {
-    display: flex;
-    gap: 0; /* Sin espacio */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    overflow: hidden; /* Clave para unificar bordes */
-    border: 2px solid #ddd; /* Borde en el contenedor */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background: #fff; /* Fondo blanco unificado */
-}
-
-/* Efecto de foco en el formulario */
-#notify-form:focus-within {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(59, 76, 202, 0.2);
-}
-
-#email-input {
-    flex-grow: 1;
-    border: none; /* Sin borde propio */
-    padding: 1.1rem;
-    font-size: 1.1rem;
-    font-family: 'Montserrat', sans-serif;
-    outline: none;
-    border-radius: 0; /* Sin bordes redondeados */
-    border-right: 1px solid #eee; /* Separador sutil */
-    background: transparent; /* Fondo transparente */
-}
-
-/* Se elimina el :focus del input, ahora lo gestiona el form */
-#email-input:focus {
-    box-shadow: none;
-}
-
-.cta-button {
-    border: none;
-    background: var(--primary-color);
-    color: var(--light-text);
-    padding: 1.1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    border-radius: 0; /* Sin bordes redondeados */
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-}
-/* Fin del formulario unificado */
-
-
-.cta-button:hover {
-    background: #2a37a0;
-    transform: translateY(0); /* Deshabilitamos el hover de botón individual */
-    box-shadow: none;
-}
-
-/* Botón secundario SÍ mantiene sus bordes y hover */
-.cta-button.secondary-button {
-    background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    padding: calc(1.1rem - 2px) calc(2rem - 2px); 
-    border-radius: 12px; /* Mantiene su radio */
-}
-
-.cta-button.secondary-button:hover {
-    background: rgba(59, 76, 202, 0.08);
-    color: var(--primary-color);
-    transform: translateY(-3px); /* Mantiene su hover */
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-}
-
-
-#form-message {
-    margin-top: 1.5rem;
-    font-weight: 700;
-    font-size: 1.1rem;
-}
 
 /* --- Contenido (Features + Mockup) --- */
 .content-split {
@@ -265,7 +393,8 @@ header {
     display: flex;
     align-items: flex-start;
     gap: 1.2rem;
-    color: var(--text-color-app);
+    color: var(--text-color-light);
+    transition: color 0.4s ease;
 }
 
 .features li .icon {
@@ -279,8 +408,8 @@ header {
     display: grid;
     place-items: center;
     border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px var(--container-shadow);
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
 }
 
 .features li:hover .icon {
@@ -290,12 +419,13 @@ header {
 .features li strong {
     display: block;
     font-size: 1.3rem;
-    color: var(--dark-text);
+    color: var(--text-color);
     margin-bottom: 0.3rem;
+    transition: color 0.4s ease;
 }
 
 
-/* --- Mockup del Teléfono (Fino y Moderno) --- */
+/* --- MOCKUP DEL TELÉFONO (Fino y Moderno) --- */
 .phone-preview {
     flex: 1;
     display: flex;
@@ -308,233 +438,230 @@ header {
     position: relative;
     width: 300px;
     height: 600px;
-    border: 10px solid #111;
+    border: 10px solid var(--mockup-body-bg);
     border-radius: 40px;
-    background: #111;
+    background: var(--mockup-body-bg);
     box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0,0,0,0.1);
     transition: transform 0.5s ease-in-out;
     transform: rotateY(-10deg) rotateX(5deg);
     padding: 0; 
+    z-index: 10;
 }
 
 .phone-mockup:hover {
     transform: rotateY(0deg) rotateX(0deg) translateY(-8px);
 }
 
-.phone-notch {
-    display: none;
-}
-
+/* CONTENEDOR DE LA PANTALLA (Sin scroll global) */
 .phone-screen {
     width: 100%;
     height: 100%;
-    background: var(--app-bg-color);
+    background: var(--mockup-bg-color);
     border-radius: 30px; 
-    overflow: hidden;
+    overflow: hidden; /* ¡IMPORTANTE! Evita que salga contenido fuera del borde redondo */
     position: relative;
-    padding-bottom: 0;
+    display: flex; 
+    flex-direction: column; /* Organiza todo en columna */
 }
 
-/* --- Contenido simulado de la App (Minimalista con Tarjetas) --- */
 .app-content-mockup {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
-    color: var(--text-color-app);
+    overflow: hidden; /* Asegura que nada se desborde */
 }
 
+/* Header de la App */
 .mock-header {
-    background-color: var(--app-header-color);
-    padding: 15px;
+    background-color: var(--mockup-header-bg) !important;
+    color: white !important;
+    padding: 12px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-    border-bottom: 1px solid #eee;
-    position: relative;
-    z-index: 1;
+    flex-shrink: 0; /* No permitir que se encoja */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 5;
 }
+
 .mock-header h4 {
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: white !important;
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 8px;
 }
 
-/* ==== ELIMINADO: .pokeball-icon ==== */
-
-/* ==== AÑADIDO: Estilo para el icono del header del móvil ==== */
 .mock-header-icon {
     width: 25px;
     height: 25px;
     image-rendering: -webkit-optimize-contrast; 
-    image-rendering: crisp-edges;
 }
 
+/* Barra de Búsqueda */
 .mock-search-bar {
     display: flex;
-    padding: 12px 15px;
-    background-color: var(--app-header-color);
-    border-bottom: 1px solid #eee;
-    gap: 10px;
+    padding: 10px 12px;
+    background-color: var(--mockup-bg-color);
+    gap: 8px;
     align-items: center;
+    flex-shrink: 0;
+    width: 100%;
 }
+
 .mock-search-bar input {
-    flex-grow: 1;
-    padding: 10px 15px;
+    flex-grow: 1; /* Ocupa todo el espacio disponible */
+    min-width: 0; /* Permite encogerse */
+    padding: 8px 10px;
     border: none;
-    background-color: var(--app-bg-color);
-    border-radius: 20px;
+    background-color: white !important;
+    border-radius: 5px;
     font-size: 0.9rem;
     font-family: 'Montserrat', sans-serif;
     outline: none;
+    color: #333 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .mock-search-bar .mock-filter-button {
-    background-color: transparent;
-    color: var(--primary-color);
-    font-size: 1.3rem;
+    background-color: var(--mockup-header-bg);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s ease;
-    padding: 5px;
-}
-.mock-search-bar .mock-filter-button:hover {
-    transform: scale(1.1);
+    padding: 8px 12px;
+    border-radius: 5px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
-/* Lista de tarjetas */
+
+/* Lista de Tarjetas (Scroll invisible) */
 .mock-list {
     flex-grow: 1;
-    overflow-y: auto;
-    padding: 12px 15px;
-    background-color: var(--app-bg-color);
+    overflow-y: auto; /* Scroll vertical habilitado */
+    padding: 10px;
+    background-color: var(--mockup-bg-color);
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
-.mock-list-item-detail {
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.85rem;
-    color: #555;
-    border: 1px solid #eee;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.mock-list-item-detail:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+.mock-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
-.mock-item-info {
-    display: flex;
-    flex-direction: column;
+
+/* --- DISEÑO DE TARJETAS (Cards) --- */
+.mock-card {
+    border-radius: 4px;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    color: white;
+    position: relative;
 }
 
-.mock-list-item-detail .name {
+.card-name {
+    font-size: 1.4rem;
     font-weight: 700;
-    color: var(--dark-text);
-    font-size: 1.1rem;
-    margin-bottom: 3px;
+    margin-bottom: 15px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-.mock-list-item-detail .type {
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 10px;
-    color: #fff;
+.card-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
 }
-.type.fire { background-color: var(--type-fire); }
-.type.water { background-color: var(--type-water); }
-.type.grass { background-color: var(--type-grass); }
-.type.electric { background-color: var(--type-electric); }
 
-
-.mock-stats {
-    display: flex;
-    gap: 15px;
-    text-align: right;
-}
-.mock-stats div {
+.stat-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 0.75rem;
-    color: #777;
 }
-.mock-stats .value {
-    font-weight: 700;
-    font-size: 0.95rem;
+
+.stat-label {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2px;
+    font-weight: 500;
 }
-.mock-stats .attack .value { color: var(--app-list-attack); }
-.mock-stats .defense .value { color: var(--app-list-defense); }
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+/* Colores para los tipos de tarjetas */
+.card-electric { background-color: #F1C40F; } /* Amarillo */
+.card-fire { background-color: #E67E22; }     /* Naranja */
+.card-water { background-color: #3498DB; }    /* Azul */
+.card-grass { background-color: #6AB04C; }    /* Verde */
+.card-normal { background-color: #95A5A6; }   /* Gris */
 
 
-/* Botón Flotante (FAB) */
+/* Botón Flotante "Nuevo Pokémon" */
 .mock-add-button {
     position: absolute;
     bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background-color: var(--primary-color);
+    right: 50%;
+    transform: translateX(50%); /* Centrado horizontalmente */
+    
+    background-color: var(--mockup-header-bg);
     color: white;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-size: 2.2rem;
-    font-weight: 400;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 0; 
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    padding: 0;
     text-align: center;
     border: none;
+    white-space: nowrap; 
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
 }
+
+.mock-add-button::before {
+    content: "Nuevo Pokémon";
+    font-size: 1rem;
+    display: block;
+}
+
 .mock-add-button:hover {
-    transform: scale(1.05);
-    background-color: #2a37a0;
+    /* Efecto de escala */
+    transform: translateX(50%) scale(1.05);
+    background-color: #5C6BC0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 
 /* --- Footer --- */
 footer {
     text-align: center;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--form-border);
     padding-top: 2.5rem;
     margin-top: 3rem;
     font-size: 0.95rem;
-    color: #888;
+    color: var(--text-color-faded);
+    transition: border-color 0.4s ease, color 0.4s ease;
 }
 
-/* ==== CAMBIO: Animaciones CSS eliminadas ==== */
-/* Las clases .animate-in, @keyframes, etc., ya no son necesarias 
-   si GSAP las maneja al inicio, pero no molestan si se quedan. 
-   Las dejo comentadas por si acaso, pero no se usan.
-*/
-/*
-@keyframes slideInUp { ... }
-@keyframes slideInLeft { ... }
-@keyframes slideInRight { ... }
-.animate-in { ... }
-.animate-left { ... }
-.animate-right { ... }
-.hero .subtitle { animation-delay: 0.2s; }
-...
-*/
-
+.footer-devs {
+    color: var(--text-color-faded);
+    margin-top: 5px;
+    transition: color 0.4s ease;
+}
 
 /* --- Responsividad --- */
 @media (max-width: 992px) {
+    body {
+        display: block; 
+    }
     .content-split {
         flex-direction: column-reverse;
         gap: 3rem;
@@ -542,81 +669,47 @@ footer {
     .hero h2 {
         font-size: 2.2rem;
     }
-    .hero .subtitle {
-        font-size: 1.2rem;
-    }
     .container {
         padding: 2.5rem;
+        margin: 2rem auto;
     }
     .phone-mockup {
         transform: none;
     }
-    .phone-mockup:hover {
-        transform: translateY(-5px);
-    }
 }
 @media (max-width: 768px) {
-    .logo {
-        font-size: 2.5rem;
+    body {
+        padding: 0; 
     }
-    /* Icono de logo en móvil */
-    .logo-icon {
-        width: 30px;
-        height: 30px;
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 2rem 1.5rem; 
+        border-radius: 0;
     }
-    .hero h2 {
-        font-size: 1.8rem;
+    .cta-button {
+        width: 100%; /* Botones full width en móvil */
     }
-    .hero .subtitle {
-        font-size: 1rem;
+    .secondary-actions {
+        width: 100%;
+    }
+    .theme-toggle {
+        top: 1rem;
+        right: 1rem;
     }
     #countdown {
-        gap: 0.8rem;
-        flex-wrap: wrap;
+        gap: 0.5rem;
     }
-    .time-block {
-        padding: 1rem 1.2rem;
-        min-width: 90px;
+    .time-block.small {
+        min-width: 60px;
+        padding: 0.5rem;
     }
-    .time-block span:first-child {
-        font-size: 2.5rem;
-    }
-    .features h3 {
-        font-size: 1.8rem;
-    }
-    .features li {
-        font-size: 1rem;
-    }
-    .features li strong {
-        font-size: 1.1rem;
-    }
-    .features li .icon {
-        width: 50px;
-        height: 50px;
+    .time-block.small span:first-child {
         font-size: 1.5rem;
     }
     
-    /* Formulario unificado en móvil */
-    #notify-form {
-        flex-direction: column;
-        border-radius: 12px;
-        border: 2px solid #ddd;
-        box-shadow: none;
-    }
-    #email-input {
-        text-align: center;
-        border-right: none;
-        border-bottom: 1px solid #eee;
-    }
-
-    .cta-button {
-        border-radius: 0;
-        padding: 1rem 1.5rem;
-    }
-    
-    .cta-button.secondary-button {
-        width: 100%;
-        border-radius: 12px;
-        padding: calc(1rem - 2px) 1.5rem;
+    /* Ajustes Mockup Móvil */
+    .mock-list {
+        -webkit-overflow-scrolling: touch;
     }
 }
